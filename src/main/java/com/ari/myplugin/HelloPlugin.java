@@ -1,20 +1,25 @@
 package com.ari.myplugin;
 
-import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import com.ari.myplugin.commands.HelloCommand;
+import com.ari.myplugin.listener.JoinListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class HelloPlugin extends JavaPlugin implements Listener {
+public class HelloPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(this, this);
+        getLogger().info("HolaPlugin activado!");
+
+        // Registrar comando
+        if (getCommand("hola") != null) {
+            getCommand("hola").setExecutor(new HelloCommand());
+        }
+
+        // Registrar eventos
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage(Component.text("Hello, " + event.getPlayer().getName() + "!"));
+    @Override
+    public void onDisable() {
+        getLogger().info("HolaPlugin desactivado!");
     }
 }
