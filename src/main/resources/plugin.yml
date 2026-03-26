@@ -1,7 +1,7 @@
-name: HolaPlugin
+name: HelloPlugin
 version: 1.0.0
-main: me.ari.holaplugin.HolaPlugin
-description: Mi primer plugin en Paper
+main: com.ari.myplugin.HelloPlugin
+description: My first Paper Plugin
 author: WhyNotAri
 website: https://papermc.io
 api-version: '1.21.11'

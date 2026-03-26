@@ -11,7 +11,7 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         event.joinMessage(
                 Component.text("✦ " + event.getPlayer().getName() + " has joined the game.")
-                        .color(NamedTextColor.GREEN)
+                        .color(NamedTextColor.DARK_PURPLE)
         );
     }
 }
