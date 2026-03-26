@@ -1,0 +1,37 @@
+name: ExamplePlugin
+version: 1.0.0
+main: com.ari.myplugin.ExamplePlugin
+description: My First Plugin
+author: WhyNotAri
+website: https://papermc.io
+api-version: '1.21.11'
+
+name: Paper-Test-Plugin
+version: '1.0'
+main: io.papermc.testplugin.TestPlugin
+description: Paper Test Plugin
+api-version: '1.21.11'
+bootstrapper: io.papermc.testplugin.TestPluginBootstrap
+loader: io.papermc.testplugin.TestPluginLoader
+
+libraries:
+  - com.google.guava:guava:30.1.1-jre
+  - com.google.code.gson:gson:2.8.6
+
+permissions:
+  permission.node:
+    description: "This is a permission node"
+    default: op
+    children:
+      permission.node.child: true
+  another.permission.node:
+    description: "This is another permission node"
+    default: notop
+
+commands:
+  command:
+    description: "This is a command"
+    usage: "/command <arg>"
+    aliases: [cmd, command]
+    permission: permission.node
+    permission-message: "You do not have permission to use this command"
