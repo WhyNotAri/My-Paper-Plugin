@@ -1,7 +1,7 @@
-name: HelloPlugin
+name: MyFirstPlugin
 version: 1.0.0
-main: com.ari.myplugin.HelloPlugin
-description: My first Paper Plugin
+main: com.ari.myplugin.Main
+description: Learning how to make Minecraft plugins
 author: WhyNotAri
 website: https://papermc.io
 api-version: '1.21.11'
@@ -10,3 +10,6 @@ commands:
   hello:
     description: It says hello
     usage: /hello
+  tracker:
+    description: Select a player to track with a compass
+    usage: /tracker <player>

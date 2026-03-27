@@ -1,5 +1,6 @@
 package com.ari.myplugin.listener;
 
+import com.ari.myplugin.Main;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.event.EventHandler;
@@ -7,11 +8,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinListener implements Listener {
+
+    private final Main plugin;
+
+    public JoinListener(Main plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        event.joinMessage(
-                Component.text("✦ " + event.getPlayer().getName() + " has joined the game.")
-                        .color(NamedTextColor.DARK_PURPLE)
-        );
+        event.getPlayer().sendMessage(Component.text("Welcome " + event.getPlayer().getName() + "!")
+                .color(NamedTextColor.AQUA));
     }
 }
