@@ -10,6 +10,6 @@ commands:
   hello:
     description: It says hello
     usage: /hello
-  tracker:
+  track:
     description: Select a player to track with a compass
-    usage: /tracker <player>
+    usage: /track <player>

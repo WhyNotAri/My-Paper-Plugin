@@ -1,7 +1,7 @@
 package com.ari.myplugin;
 
 import com.ari.myplugin.commands.HelloCommand;
-import com.ari.myplugin.commands.TrackerCommand;
+import com.ari.myplugin.commands.TrackCommand;
 import com.ari.myplugin.listener.JoinListener;
 import com.ari.myplugin.listener.TrackerListener;
 import com.ari.myplugin.managers.TrackerManager;
@@ -24,10 +24,10 @@ public class Main extends JavaPlugin {
         }
 
         // Tracker command
-        if (getCommand("tracker") != null) {
-            Objects.requireNonNull(getCommand("tracker")).setExecutor(new TrackerCommand(trackerManager));
+        if (getCommand("track") != null) {
+            Objects.requireNonNull(getCommand("track")).setExecutor(new TrackCommand(trackerManager));
         }else {
-            getLogger().info("tracker command not found");
+            getLogger().info("track command not found");
         }
 
         // Register Events
