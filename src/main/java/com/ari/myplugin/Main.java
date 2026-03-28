@@ -2,10 +2,10 @@ package com.ari.myplugin;
 
 import com.ari.myplugin.commands.HelloCommand;
 import com.ari.myplugin.commands.TrackCommand;
-import com.ari.myplugin.listener.JoinListener;
+import com.ari.myplugin.listener.HelloListener;
 import com.ari.myplugin.listener.LocatorBarListener;
 import com.ari.myplugin.listener.TrackerListener;
-import com.ari.myplugin.managers.TrackerManager;
+import com.ari.myplugin.managers.TrackManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRules;
 import org.bukkit.World;
@@ -18,7 +18,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Ari's Plugin activated");
 
-        TrackerManager trackerManager = new TrackerManager(this);
+        TrackManager trackManager = new TrackManager(this);
 
         // Hello command
         if (getCommand("hello") != null) {
@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
 
         // Tracker command
         if (getCommand("track") != null) {
-            Objects.requireNonNull(getCommand("track")).setExecutor(new TrackCommand(trackerManager));
+            Objects.requireNonNull(getCommand("track")).setExecutor(new TrackCommand(trackManager));
         }else {
             getLogger().info("track command not found");
         }
@@ -40,10 +40,9 @@ public class Main extends JavaPlugin {
         }
 
         // Register Events
-        getServer().getPluginManager().registerEvents(new JoinListener(this), this);
-        getServer().getPluginManager().registerEvents(new TrackerListener(trackerManager), this);
+        getServer().getPluginManager().registerEvents(new HelloListener(this), this);
+        getServer().getPluginManager().registerEvents(new TrackerListener(trackManager), this);
         getServer().getPluginManager().registerEvents(new LocatorBarListener(), this);
-        getLogger().info("Locator Bar deactivated");
     }
 
     @Override
