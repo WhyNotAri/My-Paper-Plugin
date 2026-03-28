@@ -18,6 +18,9 @@ public class LocatorBarListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        player.sendMessage(Component.text("Locator Bar has been disabled").color(NamedTextColor.RED));
+        Boolean locatorBarEnabled = player.getWorld().getGameRuleValue(GameRules.LOCATOR_BAR);
+        if (Boolean.FALSE.equals(locatorBarEnabled)) {
+            player.sendMessage(Component.text("Locator Bar has been disabled").color(NamedTextColor.RED));
+        }
     }
 }
