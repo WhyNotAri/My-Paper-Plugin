@@ -96,3 +96,66 @@ world_the_end/
 # Plugin Development
 *.jar.original
 dependency-reduced-pom.xml
+
+# Security & Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets/
+secret.*
+credentials/
+credentials.*
+**/secrets/
+**/credentials/
+config/local.yml
+config/local.yaml
+config/local.properties
+local.properties
+application-local.yml
+application-local.properties
+
+# API Keys & Tokens
+**/apikeys/
+*.token
+.token
+api-keys.*
+auth.json
+oauth.json
+
+# Database & Backups
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+*.dump
+backups/
+*.backup
+
+# Testing & Debug Data
+test-data/
+debug/
+*.debug
+coverage/
+.nyc_output/
+
+# Personal Notes & Documentation
+TODO.md
+NOTES.md
+notes/
+docs/private/
+
+# Local IDE Run Configurations (may contain paths)
+.idea/runConfigurations/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/dictionaries
+.idea/**/workspace.xml
+.idea/**/tasks.xml

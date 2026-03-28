@@ -3,8 +3,12 @@ package com.ari.myplugin;
 import com.ari.myplugin.commands.HelloCommand;
 import com.ari.myplugin.commands.TrackCommand;
 import com.ari.myplugin.listener.JoinListener;
+import com.ari.myplugin.listener.LocatorBarListener;
 import com.ari.myplugin.listener.TrackerListener;
 import com.ari.myplugin.managers.TrackerManager;
+import org.bukkit.Bukkit;
+import org.bukkit.GameRules;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
 
@@ -30,9 +34,16 @@ public class Main extends JavaPlugin {
             getLogger().info("track command not found");
         }
 
+        // deactivate the locator bar
+        for(World world : Bukkit.getWorlds()) {
+            world.setGameRule(GameRules.LOCATOR_BAR, false);
+        }
+
         // Register Events
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(new TrackerListener(trackerManager), this);
+        getServer().getPluginManager().registerEvents(new LocatorBarListener(), this);
+        getLogger().info("Locator Bar deactivated");
     }
 
     @Override

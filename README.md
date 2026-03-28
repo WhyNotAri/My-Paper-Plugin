@@ -8,6 +8,10 @@ Give the player who runs the `/tracker <player>` command a compass that tracks t
 /hello
 `````
 
+## Features
+- If you want to track a player using a compass use `/track <player>` and right-click it everytime you want to see where their last position was
+- The `Locator Bar` is disabled so you can track a player only by using the compass
+
 ## Requirements
 - Java 21
 - Paper 1.21.11
