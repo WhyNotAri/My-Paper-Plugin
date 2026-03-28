@@ -4,17 +4,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jspecify.annotations.NonNull;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TrackerManager {
+public class TrackManager {
 
     private final JavaPlugin plugin;
     private final Map<UUID, UUID> trackers = new HashMap<>();
 
-    public TrackerManager(JavaPlugin plugin) {
+    public TrackManager(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 

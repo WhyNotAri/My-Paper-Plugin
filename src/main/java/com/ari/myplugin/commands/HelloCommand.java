@@ -18,7 +18,7 @@ public class HelloCommand implements CommandExecutor {
 
         player.sendMessage(
                 Component.text("¡Hello, " + player.getName() + "!")
-                        .color(NamedTextColor.GREEN)
+                        .color(NamedTextColor.AQUA)
         );
 
         return true;

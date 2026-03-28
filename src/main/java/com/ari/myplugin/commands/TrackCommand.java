@@ -1,21 +1,22 @@
 package com.ari.myplugin.commands;
 
-import com.ari.myplugin.managers.TrackerManager;
+import com.ari.myplugin.managers.TrackManager;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.ItemStack;
 
 public class TrackCommand implements CommandExecutor {
 
-    private final TrackerManager trackerManager;
+    private final TrackManager trackManager;
 
-    public TrackCommand(TrackerManager trackerManager) {
-        this.trackerManager = trackerManager;
+    public TrackCommand(TrackManager trackManager) {
+        this.trackManager = trackManager;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class TrackCommand implements CommandExecutor {
 
         // alert of correct use of the command
         if(args.length != 1) {
-            sender.sendMessage("Usage: /track <tracker>");
+            sender.sendMessage(Component.text("Usage: /track <player>").color(NamedTextColor.RED));
             return true;
         }
 
@@ -38,13 +39,13 @@ public class TrackCommand implements CommandExecutor {
 
         // check if the player is online
         if(target == null || !target.isOnline()) {
-            sender.sendMessage("Player not found");
+            sender.sendMessage(Component.text("Player not found...").color(NamedTextColor.RED));
             return true;
         }
 
         // player cannot track themselves
         if(target.equals(player)) {
-            sender.sendMessage("You can't tracker yourself");
+            sender.sendMessage(Component.text("You can't track yourself").color(NamedTextColor.RED));
             return true;
         }
 
@@ -53,11 +54,11 @@ public class TrackCommand implements CommandExecutor {
         player.getInventory().addItem(compass);
 
         // set the compass to point the target instance
-        trackerManager.setTracker(player, target);
+        trackManager.setTracker(player, target);
         player.setCompassTarget(target.getLocation());
 
         // confirm the targeted player
-        player.sendMessage("Tracker has been set to " + target.getName());
+        player.sendMessage(Component.text("Tracking " + target.getName()).color(NamedTextColor.WHITE));
         return true;
     }
 }
