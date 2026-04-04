@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
 
         // Tracker command
         if (getCommand("track") != null) {
-            Objects.requireNonNull(getCommand("track")).setExecutor(new TrackCommand(trackManager));
+            Objects.requireNonNull(getCommand("track")).setExecutor(new TrackCommand(trackManager, this));
         }else {
             getLogger().info("track command not found");
         }
@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
 
         // Register Events
         getServer().getPluginManager().registerEvents(new HelloListener(this), this);
-        getServer().getPluginManager().registerEvents(new TrackerListener(trackManager), this);
+        getServer().getPluginManager().registerEvents(new TrackerListener(trackManager, this), this);
         getServer().getPluginManager().registerEvents(new LocatorBarListener(), this);
     }
 
